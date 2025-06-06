@@ -22,14 +22,18 @@
           pkgs.neovim
           pkgs.kubectl
           pkgs.jq
+          pkgs.bash-completion
           pkgs.helm
         ];
 
         shellHook = ''
-          echo "Dev environment ready for my Homelab"
-          export DEVENV="HomeLab"
           eval "$(direnv hook bash)"
-          direnv allow
+          # optionally comment out automatic allow:
+          # direnv allow
+          # source bash-completion script explicitly
+          source ${pkgs.bash-completion}/etc/profile.d/bash_completion.sh
+          source <(kubectl completion bash)
+          echo "Development environment ready for $DEVENV"         source <(kubectl completion bash)
         '';
       };
     }
