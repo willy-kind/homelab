@@ -32,8 +32,8 @@
           # direnv allow
           # source bash-completion script explicitly
           source ${pkgs.bash-completion}/etc/profile.d/bash_completion.sh
-          source <(kubectl completion bash)
-          echo "Development environment ready for $DEVENV"         source <(kubectl completion bash)
+          source <(kubectl completion bash);
+          echo "Development environment is ready 󱓟 "
         '';
       };
     }
