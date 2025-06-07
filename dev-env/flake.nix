@@ -1,8 +1,8 @@
 {
-  description = "Dev environment with Neovim and .NET";
+  description = "Dev environment with Neovim and k8s tools";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05-small";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -15,15 +15,13 @@
     {
       devShells.default = pkgs.mkShell {
         buildInputs = [
-          pkgs.git
-          pkgs.nodejs
-          pkgs.direnv
-          pkgs.python311
-          pkgs.neovim
-          pkgs.kubectl
-          pkgs.jq
           pkgs.bash-completion
+          pkgs.direnv
+          pkgs.git
           pkgs.helm
+          pkgs.kubectl
+          pkgs.k9s
+          pkgs.neovim
         ];
 
         shellHook = ''
