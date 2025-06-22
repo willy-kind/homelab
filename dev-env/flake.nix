@@ -16,17 +16,13 @@
       devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [
           bash-completion
-          direnv
           fluxcd
-          git
           helm
           kubectl
           k9s
-          neovim
         ];
 
         shellHook = ''
-          eval "$(direnv hook bash)"
           source ${pkgs.bash-completion}/etc/profile.d/bash_completion.sh
           source <(kubectl completion bash);
           echo "Development environment is ready 󱓟 "
