@@ -2,7 +2,7 @@
   description = "Dev environment with Neovim and k8s tools";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -25,6 +25,7 @@
         shellHook = ''
           source ${pkgs.bash-completion}/etc/profile.d/bash_completion.sh
           source <(kubectl completion bash);
+          export DEVENV="HomeLab"
           echo "Development environment is ready 󱓟 "
         '';
       };
