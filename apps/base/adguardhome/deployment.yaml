@@ -2,25 +2,41 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: adguardhome
+  namespace: adguard
+  labels:
+    app: adguardhome
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: adguardhome
-  template:
-    metadata:
-      labels:
-        app: adguardhome
-    spec:
-      containers:
-        - name: adguardhome
-          image: adguard/adguardhome:v0.107.69
-          ports:
-            - containerPort: 3000
-          volumeMounts:
-            - name: adguardhome-data
-              mountPath: /etc/adguardhome/data
-      volumes:
-        - name: adguard-data
-          persistentVolumeClaim:
-            claimName: adguard-data-pvc
+    template:
+      metadata:
+        labels:
+          app: adguardhome
+      spec:
+        containers:
+          - name: adguardhome
+            image: adguard/adguardhome:latest
+            imagePullPolicy: IfNotPresent
+            ports:
+              - name: http
+                containerPort: 3000
+              - name: dns-tcp
+                containerPort: 53
+                protocol: TCP
+              - name: dns-udp
+                containerPort: 53
+                protocol: UDP
+            volumeMounts:
+              - name: config
+                mountPath: /opt/adguardhome/conf
+              - name: data
+                mountPath: /opt/adguardhome/work
+        volumes:
+          - name: config
+            persistentVolumeClaim:
+              claimName: adguard-config-pvc
+          - name: data
+            persistentVolumeClaim:
+              claimName: adguard-data-pvc
