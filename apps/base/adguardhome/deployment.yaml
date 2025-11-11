@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguardhome
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adguardhome
+  template:
+    metadata:
+      labels:
+        app: adguardhome
+    spec:
+      containers:
+        - name: adguardhome
+          image: adguard/adguardhome:v0.107.69
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: adguardhome-data
+              mountPath: /etc/adguardhome/data
+      volumes:
+        - name: adguard-data
+          persistentVolumeClaim:
+            claimName: adguard-data-pvc
