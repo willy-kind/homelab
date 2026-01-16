@@ -20,6 +20,7 @@
           helm
           kubectl
           k9s
+          sops
         ];
 
         shellHook = ''
