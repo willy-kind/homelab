@@ -19,6 +19,7 @@
             kubectl
             k9s
             sops
+            age
           ];
 
           shellHook = ''
