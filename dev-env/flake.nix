@@ -15,7 +15,7 @@
             bash-completion
             cloudflared
             fluxcd
-            helm
+            kubernetes-helm
             kubectl
             k9s
             sops
