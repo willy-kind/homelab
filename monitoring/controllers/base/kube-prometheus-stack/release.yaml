@@ -28,3 +28,12 @@ spec:
   values:
     grafana:
       adminPassword: test
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      annotations: {}
+      labels: {}
+      hosts: 
+        - grs.kindlabs.xyz
+      paths: []
+      tls: []
