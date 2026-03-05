@@ -25,6 +25,7 @@
           shellHook = ''
             source ${pkgs.bash-completion}/etc/profile.d/bash_completion.sh
             source <(kubectl completion bash);
+            source <(helm completion bash)
             export DEVENV="HomeLab"
             echo "Development environment is ready 󱓟 "
           '';
