@@ -28,9 +28,9 @@ spec:
   values:
     grafana:
       adminPassword: test
-    ingress:
-      enabled: true
-      ingressClassName: traefik
-      hosts: 
-        - grs.kindlabs.xyz
-      tls: []
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        hosts: 
+          - grs.kindlabs.xyz
+        tls: []
