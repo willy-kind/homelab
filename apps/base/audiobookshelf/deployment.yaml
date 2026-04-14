@@ -20,19 +20,28 @@ spec:
         - name: audiobookshelf
           image: advplyr/audiobookshelf:latest
           ports:
-            - containerPort: 13378
+            - containerPort: 80
           securityContext: 
             allowPrivilegeEscalation: false
           volumeMounts:
-            - name: audiobookshelf-data
-              mountPath: /audiobooks
-            - name: audiobookshelf-data
-              mountPath: /podcasts
-            - name: audiobookshelf-data
+            - name: config
               mountPath: /config
-            - name: audiobookshelf-data
+            - name: metadata
               mountPath: /metadata
+            - name: audiobooks
+              mountPath: /audiobooks
+            - name: podcasts
+              mountPath: /podcasts
       volumes:
-        - name: audiobookshelf-data
+        - name: config
           persistentVolumeClaim:
-            claimName: audiobookshelf-data-pvc
+            claimName: audiobookshelf-config-pvc
+        - name: metadata
+          persistentVolumeClaim:
+            claimName: audiobookshelf-metadata-pvc
+        - name: audiobooks
+          persistentVolumeClaim:
+            claimName: audiobookshelf-audiobooks-pvc
+        - name: podcasts
+          persistentVolumeClaim:
+            claimName: audiobookshelf-podcasts-pvc
