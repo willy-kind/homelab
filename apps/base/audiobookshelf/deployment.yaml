@@ -21,3 +21,12 @@ spec:
           image: advplyr/audiobookshelf:latest
           ports:
             - containerPort: 13378
+          securityContext: 
+            allowPrivilegeEscalation: false
+          volumeMounts:
+            - name: audiobookshelf-data
+              mountPath: /etc/linkding/data
+      volumes:
+        - name: audiobookshelf-data
+          persistentVolumeClaim:
+            claimName: audiobookshelf-data-pvc
