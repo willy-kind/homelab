@@ -5,6 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: homevault-staging
   resources:
     requests:
       storage: 1Gi
@@ -15,6 +16,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: audiobookshelf-metadata-pvc
+storageClassName: homevault-staging
 spec:
   accessModes:
     - ReadWriteOnce
@@ -28,6 +30,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: audiobookshelf-audiobooks-pvc
+storageClassName: homevault-staging
 spec:
   accessModes:
     - ReadWriteOnce
@@ -41,6 +44,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: audiobookshelf-podcasts-pvc
+storageClassName: homevault-staging
 spec:
   accessModes:
     - ReadWriteOnce
