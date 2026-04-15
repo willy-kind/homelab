@@ -7,8 +7,7 @@ metadata:
 provisioner: cluster.local/nfs-subdir-external-provisioner
 parameters:
   server: 192.168.68.63
-  path: /volume1/k8s/staging
-  pathPattern: "${.PVC.namespace}/${.PVC.name}"
+  pathPattern: "staging/${.PVC.namespace}/${.PVC.name}"
   onDelete: retain
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
