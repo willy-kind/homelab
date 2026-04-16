@@ -6,11 +6,11 @@ resources:
   - resources/linkding-container-env-secret.yaml
   - resources/ingress.yaml
 patches:
-  - path: namespace.yaml
+  - path: patches/namespace.yaml
     target:
       kind: namespace
       name: linkding
-  - path: storage.yaml
+  - path: patches/storage.yaml
     target:
       name: PersistentVolumeClaim
       name: linkding-data-pvc
