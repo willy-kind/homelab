@@ -4,7 +4,7 @@ metadata:
   name: storage-staging
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
-provisioner: cluster.local/nfs-subdir-external-provisioner
+provisioner: cluster.local/nfs-provisioner
 parameters:
   server: 192.168.68.63
   pathPattern: "${.PVC.namespace}/${.PVC.name}"

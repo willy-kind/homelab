@@ -12,5 +12,6 @@ spec:
         kind: HelmRepository
         name: nfs-provisioner
   values:
+    fullnameOverride: nfs-provisioner
     storageClass:
       create: false
