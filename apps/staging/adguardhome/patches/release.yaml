@@ -7,8 +7,14 @@ spec:
     ingress:
       enabled: true
       ingressClassName: traefik
-      hosts: 
-        - agh.kindlabz.xyz
-      tls: []
+      hosts:
+        - host: agh.staging.kindlabz.xyz
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+              backend:
+                service:
+                  port:
+                    name: http
     persistence:
       storageClass: staging-storage
