@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: storage-staging
+  storageClassName: staging-storage
   resources:
     requests:
       storage: 1Gi
