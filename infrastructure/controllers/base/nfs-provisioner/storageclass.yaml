@@ -1,13 +1,12 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: homevault-staging
+  name: storage
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
 provisioner: cluster.local/nfs-subdir-external-provisioner
 parameters:
-  server: 192.168.68.63
-  pathPattern: "staging/${.PVC.namespace}/${.PVC.name}"
+  pathPattern: "${.PVC.namespace}/${.PVC.name}"
   onDelete: retain
 reclaimPolicy: Retain
 volumeBindingMode: Immediate

@@ -5,12 +5,12 @@ resources:
 #  - ../../base/linkding/
 #  - linkding-container-env-secret.yaml
 #  - ingress.yaml
-#patches:
-#  - path: namespace.yaml
-#    target:
-#      kind: namespace
-#      name: linkding
-#  - path: storage.yaml
-#    target:
-#      name: PersistentVolumeClaim
-#      name: linkding-data-pvc
+patches:
+  - path: namespace.yaml
+    target:
+      kind: namespace
+      name: linkding
+  - path: storage.yaml
+    target:
+      name: PersistentVolumeClaim
+      name: linkding-data-pvc
