@@ -1,11 +1,12 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: storage
+  name: storage-staging
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
 provisioner: cluster.local/nfs-subdir-external-provisioner
 parameters:
+  server: 192.168.68.63
   pathPattern: "${.PVC.namespace}/${.PVC.name}"
   onDelete: retain
 reclaimPolicy: Retain

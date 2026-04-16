@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: storage-staging
 resources:
   - ../../base/nfs-provisioner/
+  - resources/storageclass.yaml
 patches:
   - path: patches/namespace.yaml
     target: 
@@ -12,7 +13,3 @@ patches:
     target:
       kind: HelmRelease
       name: nfs-provisioner
-  - path: patches/storageclass.yaml
-    target:
-      kind: Storageclass
-      name: storage
