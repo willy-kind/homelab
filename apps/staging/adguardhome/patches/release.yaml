@@ -1,0 +1,14 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: adguardhome
+spec:
+  values:
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      hosts: 
+        - agh.kindlabz.xyz
+      tls: []
+    persistence:
+      storageClass: staging-storage

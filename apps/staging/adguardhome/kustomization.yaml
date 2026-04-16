@@ -1,5 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: adguard
+namespace: staging-adguardhome
 resources:
   - ../../base/adguardhome/
+patches:
+  - path: resources/namespace.yaml
+    target:
+      kind: Namespace
+      name: adguardhome
+  - path: resources/release.yaml 
+    target:
+      kind: HelmRelease
+      name: adguardhome

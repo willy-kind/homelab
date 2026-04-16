@@ -8,7 +8,7 @@ resources:
 patches:
   - path: patches/namespace.yaml
     target:
-      kind: namespace
+      kind: Namespace
       name: linkding
   - path: patches/storage.yaml
     target:
