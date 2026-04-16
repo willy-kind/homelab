@@ -4,8 +4,8 @@ metadata:
   name: linkding-data-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: homevault-staging
+    - ReadWriteMany
+  storageClassName: ""
   resources:
     requests:
       storage: 1Gi
