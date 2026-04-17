@@ -25,6 +25,10 @@ spec:
       - paths: ["/metadata/annotations/prometheus-operator-validated"]
         target:
           kind: PrometheusRule
+  valuesFrom:
+    - kind: Secret
+      name: kube-prometheus-stack-values
+      valuesKey: values.yaml
   values:
     grafana:
       adminPassword: test
@@ -34,3 +38,28 @@ spec:
         hosts: 
           - grs.kindlabz.xyz
         tls: []
+      persistence:
+        enabled: true
+        storageClassName: monitoring-storage 
+        size: 10Gi
+        accessmodes: ["ReadWriteOnce"]
+    prometheus:
+      prometheusSpec:
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: monitoring-storage
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 50Gi
+    alertmanager:
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: monitoring-storage
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 10Gi

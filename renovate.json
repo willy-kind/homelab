@@ -1,8 +1,39 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
   "kubernetes": {
     "fileMatch": [
       "\\.yaml$"
     ]
-  }
+  },
+  "helm-values": {
+    "fileMatch": [
+      "\\.yaml$"
+    ]
+  },
+  "flux": {
+    "fileMatch": [
+      "\\.yaml$"
+    ]
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["helmv3", "flux"],
+      "matchPaths": ["apps/staging/**", "infrastructure/**"],
+      "automerge": false,
+      "labels": ["staging", "helm"]
+    },
+    {
+      "matchManagers": ["kubernetes"],
+      "matchPaths": ["apps/staging/**"],
+      "automerge": false,
+      "labels": ["staging", "image"]
+    },
+    {
+      "matchPaths": ["apps/prod/**"],
+      "enabled": false
+    }
+  ]
 }

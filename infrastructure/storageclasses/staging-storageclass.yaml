@@ -1,0 +1,13 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: staging-storage
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"
+provisioner: cluster.local/nfs-provisioner
+parameters:
+  server: 192.168.68.63
+  pathPattern: "staging/${.PVC.namespace}/${.PVC.name}"
+  onDelete: retain
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
