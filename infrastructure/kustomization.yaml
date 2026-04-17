@@ -4,5 +4,5 @@ resources:
 #  - kube-prometheus-stack
   - nfs-provisioner
   - renovate
-  - repositories
+#  - repositories
   - storageclasses
