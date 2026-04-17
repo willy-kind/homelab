@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
 #  - kube-prometheus-stack
   - nfs-provisioner
-#  - renovate
-#  - repositories
+  - renovate
+  - repositories
   - storageclasses
