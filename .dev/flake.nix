@@ -26,6 +26,10 @@
             source ${pkgs.bash-completion}/etc/profile.d/bash_completion.sh
             source <(kubectl completion bash);
             source <(helm completion bash)
+
+            # use the repo's git hooks (conventional commits)
+            git config core.hooksPath .dev/githooks
+
             export DEVENV="HomeLab"
             echo "Development environment is ready 󱓟 "
           '';
